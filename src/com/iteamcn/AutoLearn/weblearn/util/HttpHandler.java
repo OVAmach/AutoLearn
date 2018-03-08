@@ -10,6 +10,7 @@ import org.json.JSONObject;
 
 import com.iteamcn.AutoLearn.util.ContentType;
 import com.iteamcn.AutoLearn.util.Logger;
+import com.iteamcn.AutoLearn.util.NetWorkException;
 import com.iteamcn.AutoLearn.weblearn.IHttpMethod;
 
 public abstract class HttpHandler implements IHttpMethod{
@@ -39,7 +40,8 @@ public abstract class HttpHandler implements IHttpMethod{
 		HttpMessage message=new HttpMessage();
 		switch (method.getStatusCode()) {
 		case HttpStatus.SC_OK:
-			switch (method.getResponseHeader("Content-Type").getValue().split(";")[0]) {
+			String contentType=method.getResponseHeader("Content-Type").getValue().split(";")[0];
+			switch (contentType) {
 				case ContentType.JSON:
 					message.setContentType(ContentType.JSON);
 					BufferedReader reader = new BufferedReader(new InputStreamReader(method.getResponseBodyAsStream()));  
@@ -55,7 +57,8 @@ public abstract class HttpHandler implements IHttpMethod{
 					message.setContentType(ContentType.JPEG);
 					message.setContent(method.getResponseBody());
 				default:
-					break;
+					Logger.getLogger().error("未处理的ContentType:"+contentType);
+					throw new NetWorkException();
 			}
 			break;
 

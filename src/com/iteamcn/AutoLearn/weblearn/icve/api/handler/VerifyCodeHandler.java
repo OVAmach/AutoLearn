@@ -5,6 +5,7 @@ import java.util.Random;
 
 import com.iteamcn.AutoLearn.util.ContentType;
 import com.iteamcn.AutoLearn.util.Logger;
+import com.iteamcn.AutoLearn.util.NetWorkException;
 import com.iteamcn.AutoLearn.weblearn.icve.api.MessageCode;
 import com.iteamcn.AutoLearn.weblearn.icve.api.Url;
 import com.iteamcn.AutoLearn.weblearn.util.ApiArgs;
@@ -42,6 +43,9 @@ public class VerifyCodeHandler extends ApiHandler {
 				newMessage.setCode(MessageCode.NET_FAILED);
 			}
 		}catch(IOException e){
+			Logger.getLogger().error("网络错误",e.fillInStackTrace());
+			newMessage.setCode(MessageCode.NET_ERROR);
+		}catch(NetWorkException e){
 			Logger.getLogger().error("网络错误",e.fillInStackTrace());
 			newMessage.setCode(MessageCode.NET_ERROR);
 		}catch(Exception e){

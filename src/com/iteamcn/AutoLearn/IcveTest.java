@@ -49,8 +49,13 @@ public class IcveTest {
 			{
 				InnerMessage m = v.doHttp("",true);
 				JFrame jframe = new JFrame();
-				ImageIcon i=new ImageIcon((byte[])m.getContent());
-				JLabel l=new JLabel(i);
+				JLabel l=new JLabel("发生错误");
+				if(m.getContent()!=null){
+					ImageIcon i=new ImageIcon((byte[])m.getContent());
+					l=new JLabel(i);
+				}
+				
+				
 				jframe.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 				jframe.add(l);
 				jframe.setBounds(0, 0, 200, 200);
