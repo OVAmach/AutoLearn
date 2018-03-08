@@ -1,0 +1,2 @@
+ResType	1使用jwplayer,需要updateState
+ResType	4直接view
