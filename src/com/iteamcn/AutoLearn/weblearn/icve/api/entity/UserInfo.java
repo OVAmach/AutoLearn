@@ -12,7 +12,7 @@ public class UserInfo {
 		this.userId = userId;
 	}
 	public UserInfo(JSONObject json) throws JSONException{
-		this.nickName=json.getString("nickname");
+		this.nickName=json.optString("nickname");
 		this.userId=json.getString("userid");
 	}
 	public String getNickName() {

@@ -43,7 +43,7 @@ public class LoginHandler extends ApiHandler {
 			if(message.getContentType().equals(ContentType.JSON)){
 				JSONObject json=(JSONObject)message.getContent();
 				if(json.getInt("code")==ApiCode.LOGIN_SUCCESS){
-					json.put("nickname", URLDecoder.decode(json.getString("nickname"), Encoding.UTF8));
+					json.put("nickname", URLDecoder.decode(json.optString("nickname","null"), Encoding.UTF8));
 				}
 				newMessage.setObject(new UserInfo(json));
 				newMessage.setContent(json);

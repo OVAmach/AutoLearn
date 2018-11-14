@@ -41,8 +41,7 @@ public abstract class HttpHandler implements IHttpMethod{
 		switch (method.getStatusCode()) {
 		case HttpStatus.SC_OK:
 			String contentType=method.getResponseHeader("Content-Type").getValue().split(";")[0];
-			switch (contentType) {
-				case ContentType.JSON:
+			if(ContentType.JSON.equalsIgnoreCase(contentType)) {
 					message.setContentType(ContentType.JSON);
 					BufferedReader reader = new BufferedReader(new InputStreamReader(method.getResponseBodyAsStream()));  
 					StringBuffer stringBuffer = new StringBuffer();  
@@ -52,13 +51,12 @@ public abstract class HttpHandler implements IHttpMethod{
 					}  
 					String ts = stringBuffer.toString();  
 					message.setContent(new JSONObject(ts));
-					break;
-				case ContentType.JPEG:
+			}else if(ContentType.JPEG.equalsIgnoreCase(contentType)) {
 					message.setContentType(ContentType.JPEG);
 					message.setContent(method.getResponseBody());
-				default:
+			}else {
 					Logger.getLogger().error("未处理的ContentType:"+contentType);
-					throw new NetWorkException();
+					//throw new NetWorkException();
 			}
 			break;
 

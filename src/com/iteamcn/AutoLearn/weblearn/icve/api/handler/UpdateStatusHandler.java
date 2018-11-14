@@ -31,9 +31,9 @@ public class UpdateStatusHandler extends ApiHandler {
 		InnerMessage newMessage=new InnerMessage();
 		try{
 			if(withoutArgHead){
-				httpHandler.post(Url.POST_UPDATE_STATUS,"cellId="+arg+"&learntime=0&status=2", ContentType.FORM, Encoding.UTF8);
-				httpHandler.post(Url.POST_UPDATE_STATUS,"cellId="+arg+"&learntime=0&status=1", ContentType.FORM, Encoding.UTF8);
-				httpHandler.post(Url.POST_UPDATE_STATUS,"cellId="+arg+"&learntime=0&status=0", ContentType.FORM, Encoding.UTF8);
+				httpHandler.post(Url.POST_UPDATE_STATUS,"cellId="+arg+"&learntime=99999999&status=2", ContentType.FORM, Encoding.UTF8);
+				httpHandler.post(Url.POST_UPDATE_STATUS,"cellId="+arg+"&learntime=99999999&status=1", ContentType.FORM, Encoding.UTF8);
+				httpHandler.post(Url.POST_UPDATE_STATUS,"cellId="+arg+"&learntime=99999999&status=0", ContentType.FORM, Encoding.UTF8);
 			}else{
 				httpHandler.post(Url.POST_UPDATE_STATUS,arg, ContentType.FORM, Encoding.UTF8);
 				httpHandler.post(Url.POST_UPDATE_STATUS,arg, ContentType.FORM, Encoding.UTF8);

@@ -1,8 +1,8 @@
 package com.iteamcn.AutoLearn.weblearn.icve.api;
 
 public final class Url{
-	public static final String GET_VERIFY_CODE="http://www.icve.com.cn/portal/users/verifycode";
-	public static final String POST_LOGIN="http://www.icve.com.cn/portal/users/login";
+	public static final String GET_VERIFY_CODE="http://www.icve.com.cn/portal/VerifyCode/index";
+	public static final String POST_LOGIN="http://www.icve.com.cn/portal/Register/Login_New";
 	public static final String POST_USER="http://www.icve.com.cn/common/common/getUserInfo";
 	public static final String POST_USER_INFO="http://www.icve.com.cn/common/common/getUserInfo";
 	public static final String POST_STUDING_COURSE="http://www.icve.com.cn/studycenter/MyCourse/studingCourse";
