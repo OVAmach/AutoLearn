@@ -46,9 +46,10 @@ public class IcveTest {
 			SubmitPaperHandler sp=new SubmitPaperHandler(h);
 			PaperQuestionsHandler pq;
 			Scanner in=new Scanner(System.in);
+			JFrame jframe;
 			{
 				InnerMessage m = v.doHttp("",true);
-				JFrame jframe = new JFrame();
+				jframe = new JFrame();
 				JLabel l=new JLabel("发生错误");
 				if(m.getContent()!=null){
 					ImageIcon i=new ImageIcon((byte[])m.getContent());
@@ -71,6 +72,7 @@ public class IcveTest {
 			System.out.print("验证码：");
 			String verifyCode=in.next();
 			in.nextLine();
+			jframe.dispose();
 			InnerMessage m=new InnerMessage();
 
 				m = login.doHttp(new LoginArgs(username, password,verifyCode ));
